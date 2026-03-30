@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from datetime import datetime
 import os
-from documents import generate_migeba_act, generate_forma2
+from documents import generate_migeba_act
 from database import init_db, save_document, get_document
 
 app = Flask(__name__)
@@ -70,39 +70,6 @@ def generate_migeba():
             'document_id': doc_id,
             'file_path': pdf_path,
             'message': 'Migeba Chabarebis Act generated successfully'
-        }), 201
-        
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/generate/forma2', methods=['POST'])
-def generate_forma2_route():
-    """Generate Forma 2 PDF"""
-    try:
-        data = request.json
-        
-        # Validate required fields
-        required_fields = ['owner_name', 'property_address']
-        if not all(field in data for field in required_fields):
-            return jsonify({'error': 'Missing required fields'}), 400
-        
-        # Generate PDF
-        pdf_path = generate_forma2(data)
-        
-        # Save to database
-        doc_id = save_document({
-            'type': 'forma2',
-            'owner': data.get('owner_name'),
-            'property_address': data.get('property_address'),
-            'date_created': datetime.now(),
-            'file_path': pdf_path
-        })
-        
-        return jsonify({
-            'success': True,
-            'document_id': doc_id,
-            'file_path': pdf_path,
-            'message': 'Forma 2 generated successfully'
         }), 201
         
     except Exception as e:

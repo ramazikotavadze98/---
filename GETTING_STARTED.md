@@ -2,7 +2,7 @@
 
 ## რა არის ეს პროექტი?
 
-ეს არის სრული ღირებული აპლიკაცია Georgian დოკუმენტების (მიგების აქტი და ფორმა 2) ავტომატური გენერირებისთვის. სისტემა დინამიურად აკლებს PDF დოკუმენტებს ფორმებიდან შემოსული მონაცემების საფუძველზე.
+ეს არის სრული ღირებული აპლიკაცია Georgian დოკუმენტის (მიგების აქტი) ავტომატური გენერირებისთვის. სისტემა დინამიურად აკლებს PDF დოკუმენტს ფორმიდან შემოსული მონაცემების საფუძველზე.
 
 ## ტექოლოგიის სტეკი
 
@@ -110,25 +110,6 @@ Content-Type: application/json
 }
 ```
 
-### ფორმა 2 გენერირება
-```
-POST /api/generate/forma2
-Content-Type: application/json
-
-{
-  "owner_name": "გიორგი სმიტი",
-  "owner_id": "12345678",
-  "phone": "+995 599 123456",
-  "email": "giorgi@example.com",
-  "owner_address": "თბილისი, ვაკე",
-  "property_address": "თბილისი, ვაკე, 1-ელი სახ.",
-  "property_type": "ბინა",
-  "area": "75",
-  "legal_basis": "მიგების აქტი",
-  "registration_number": "REG123456"
-}
-```
-
 ### დოკუმენტის ჩამოტვირთვა
 ```
 GET /api/download/{document_id}
@@ -160,9 +141,7 @@ baumer-act/
         ├── index.css
         └── components/
             ├── MigebaForm.js    # მიგების აქტის ფორმა
-            ├── MigebaForm.css
-            ├── Forma2Form.js    # ფორმა 2
-            └── Forma2Form.css
+          └── MigebaForm.css
 ```
 
 ---
