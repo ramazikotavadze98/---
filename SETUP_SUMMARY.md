@@ -12,17 +12,17 @@ baumer-act/
 │
 ├── 📂 backend/                           
 │   ├── 📄 app.py                        
-│   │   └─ შესაბამის:
+│   │   └─ same:
 │   │      • POST /api/generate/migeba-act    
 │   │      • GET /api/download/{id}          
 │   │      • GET /api/documents/{id}         
 │   │
 │   ├── 📄 documents.py                   
-│   │   └─ შეიცავს:
+│   │   └─ contains:
 │   │      • generate_migeba_act()      
 │   │
 │   └── 📄 database.py                    
-│       └─ შეიცავს:
+│       └─ contains:
 │          • init_db()                 
 │          • save_document()          
 │          • get_document()             
